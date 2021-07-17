@@ -7,7 +7,6 @@ $id_error = $Avatar_error = $hoTen_error = $chucVu_error
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-
   $id = $_POST["id"];
   $Avatar = $_FILES['img']['name'];
   $image_tmp = $_FILES['img']['tmp_name'];
@@ -58,8 +57,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $ngaySinh_error = "Vui lòng chọn năm sinh < ngày hiện tại!!";
   } elseif ($ngaySinh > $ngayHT) {
     $ngaySinh_error = "Ngày sinh không hợp lệ";
-  }elseif ($tuoi < 18) {
-    $ngaySinh_error= "Tuổi nhỏ  hơn 18";
+  } elseif ($tuoi < 18) {
+    $ngaySinh_error = "Tuổi nhỏ  hơn 18";
   }
 
 
@@ -76,7 +75,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     move_uploaded_file($image_tmp, "img/" . $_FILES["img"]["name"]);
     header("location: index.php");
   }
- 
 }
 
 
@@ -98,14 +96,50 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="bootstrap-4.6.0-dist/css/bootstrap.min.css" crossorigin="anonymous">
   <link rel="stylesheet" href="styles/fontawesome-free-5.15.3-web/css/all.min.css">
- <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/style.css">
 
 </head>
 
 <body>
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="index.php">
+          <img src="img/logo2.png" alt="logo" id="logo" style="width: 100px; ">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
+      <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.php">
+              <i class="fas fa-home"></i>
+              Home 
+              <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Báo cáo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+            <i class="fas fa-headset"></i>
+              Trợ giúp</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+        </ul>
+        <form class="form-inline">
+          <a href="search.php" type="button" class="btn  btn-primary btn-block  my-2 my-sm-0"  >
+          <i class="fas fa-search"></i>
+          Search Nhân viên</a>
+        </form>
+      </div>
+    </nav>
+  </div>
 
-
+  
   <div class="container">
     <div class="row">
       <div class="col header-left">

@@ -5,6 +5,7 @@ $id = $Avatar = $hoTen = $chucVu = $ngaySinh = $noiSinh = $gioiTinh = "";
 $id_error = $Avatar_error = $hoTen_error = $chucVu_error
     = $ngaySinh_error = $noiSinh_error = $gioiTinh_error = "";
 
+    // Xổ Data vào ô input
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $id_get = $_GET["id"];
     $sql = "SELECT * FROM nhanvien WHERE id = $id_get";
@@ -22,15 +23,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     }
 }
 
+
+// thực thi Edit
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $id_get = $_GET["id"];
-    $sql = "SELECT * FROM nhanvien WHERE id = $id_get";
-    $result_sql = DataProvider::executeQuery($sql);
-
-
-
-
-
 
     $id = $_POST["id_edit"];
     $Avatar = $_FILES['img']['name'];
@@ -90,9 +85,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $noiSinh_error = "Nơi sinh không được bỏ trống";
     }
 
-
-    $sql = "INSERT INTO nhanvien(id, Avatar, ho_ten, gioi_tinh, Nam_sinh, chuc_vu, Noi_Sinh) 
-    VALUES('$id', '$Avatar', '$hoTen', '$gioiTinh', '$ngaySinh', '$chucVu', '$noiSinh')";
+            // id, Avatar, ho_ten, gioi_tinh, Nam_sinh, chuc_vu, Noi_Sinh
+            $sql = "UPDATE nhanvien SET id='$id',Avatar='$Avatar',ho_ten='$hoTen',gioi_tinh='$gioiTinh',Nam_sinh='$ngaySinh',chuc_vu='$chucVu',Noi_Sinh='$noiSinh' WHERE id= '$id'";
     if ($id != "" && $Avatar != "" && $hoTen != "" && $gioiTinh != "" && $ngaySinh != "" && $chucVu != "" && $noiSinh != "") {
         DataProvider::executeQuery($sql);
         move_uploaded_file($image_tmp, "img/" . $_FILES["img"]["name"]);

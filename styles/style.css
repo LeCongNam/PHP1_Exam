@@ -20,3 +20,25 @@ tr {
 #hoten{
     width: 200px;
 }
+
+.search_nv{
+    width: 100%;
+    height: 300px;
+    background: #ccc;
+}
+
+.form_search{
+    
+}
+
+.timkiem{
+    /* margin: 30px auto; */
+    padding: 50px;
+
+}
+
+#search_3{
+    width: 300px;
+    height: 50px;
+    border-radius: 3px;
+}

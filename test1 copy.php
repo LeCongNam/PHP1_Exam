@@ -13,6 +13,10 @@ $noiSinh   = "";
 
 if (isset($_POST["submit"]) == "post") {
 
+    $servername = "localhost";
+    $username   = "root";
+    $password   = "";
+    $dbname     = "quanli_nhanvien";
 
     $id = $_POST["id"];
     $Avatar = $_FILES['img']['name'];
@@ -25,11 +29,19 @@ if (isset($_POST["submit"]) == "post") {
     $noiSinh = $_POST["noisinh"];
 
 
-    $sql = "UPDATE nhanvien SET 'id'='$id','Avatar'='$Avatar','ho_ten'='$hoTen','gioi_tinh'='$gioiTinh','Nam_sinh'='$ngaySinh','chuc_vu'='$chucVu','Noi_Sinh'='$noiSinh' WHERE 'id'= '$id'";
+    $link = mysqli_connect($servername , $username, $password, $dbname);
 
-    DataProvider::executeQuery($sql);
+
+    $sql = "SELECT * FROM nhanvien WHERE ho_ten LIKE '$hoTen'";
+
+    if (mysqli_query($link, $sql)) {
+        echo "Thêm bản ghi thành công.";
+    } else {
+        echo "ERROR: Không thể thực thi $sql. " . mysqli_error($link);
+    }
+
     move_uploaded_file($image_tmp, "img/" . $_FILES["img"]["name"]);
-    header("location: index.php");
+
 }
 
 
