@@ -1,0 +1,22 @@
+.error_message {
+    color: red;
+}
+
+#form-1 {
+    background-color: rgb(192, 238, 238);
+}
+
+.header-left {
+    margin-top: 10px;
+}
+
+.avatar {
+    width: 100px;
+}
+
+tr {
+    text-align: center;
+}
+#hoten{
+    width: 200px;
+}
